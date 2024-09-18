@@ -130,6 +130,7 @@
     <ClCompile Include="BC.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="abc.hpp" />
     <ClInclude Include="Header.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
