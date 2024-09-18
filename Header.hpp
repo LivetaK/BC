@@ -1,5 +1,8 @@
 #pragma once
 #include "abc.hpp"
+#include <fstream>
+#include <sstream>
+#include <string>
 
 
 char intToHexChar(int value) {

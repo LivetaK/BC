@@ -14,7 +14,7 @@ int main() {
 	for (char c : inputVector) {
 		i++;
 		int a = convert(c);
-	    cout << a <<endl;
+	    //cout << a <<endl;
 		sandauga *= a;
 		cout << sandauga << endl;
 		if (sandauga<0) {
@@ -36,9 +36,14 @@ int main() {
 			code.push_back(sandauga);
 		}
 	}
+	stringstream longCode;
 	for (char c : code) {
-		cout << c << endl;
+		//cout << c;
+		longCode << c;
 	}
+	string hexCode = longCode.str();
+	cout << hexCode;
+
 	//int length = input.length();
 	//code(input, length);
 	//int a = convert(input);
