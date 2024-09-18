@@ -9,7 +9,7 @@ int main() {
 	cin >> input;
 	vector<char> inputVector(input.begin(), input.end());
 	int sandauga = 1;
-	vector<int> code;
+	vector<char> code;
 	int i = 0;
 	for (char c : inputVector) {
 		i++;
@@ -24,8 +24,10 @@ int main() {
 			while (sandauga != 0) {
 				element = sandauga % 16;
 				sandauga = sandauga / 16;
-				code.push_back(element);
 				cout << element;
+				char character = intToHexChar(element);
+				code.push_back(character);
+
 			}
 			cout << endl;
 			sandauga = 1;
@@ -33,10 +35,8 @@ int main() {
 		if (sandauga != 1 && i == inputVector.size()) {
 			code.push_back(sandauga);
 		}
-
 	}
-	for (int c : code) {
-		cout << "labas" << endl;
+	for (char c : code) {
 		cout << c << endl;
 	}
 	//int length = input.length();
