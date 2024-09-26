@@ -3,8 +3,10 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 
 char intToHexChar(int value) {
@@ -25,12 +27,13 @@ void menu(int &choice) {
     cout << "5 - failas su >1000 kitokiu atsitiktinai sugenruotu simboliu" << endl;
     cout << "6 - PAGRINDINIS failas kuriame pakeistas vienas simbolis" << endl;
     cout << "7 - tuscias failas" << endl;
-    cout << "8 - baigti darba" << endl;
+	cout << "8 - skaityti eilutes is failo konstitucija.txt" << endl;
+    cout << "9 - baigti darba" << endl;
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << endl;
 	cout << "Jusu pasirinkimas: ";
 
-	while (!(cin >> choice)|| choice < 1 ||choice > 8) {
+	while (!(cin >> choice)|| choice < 1 ||choice > 9) {
 		cout << "Neteisingas pasirinkimas. Bandykite dar karta" << endl;
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -39,7 +42,7 @@ void menu(int &choice) {
 }
 
 string hashFun(string input) {
-	cout << "input: " << input << endl;
+	//cout << "input: " << input << endl;
 	vector<char> inputVector(input.begin(), input.end());
 	int sandauga = 1;
 	vector<char> code;
@@ -74,7 +77,7 @@ string hashFun(string input) {
 		longCode << c;
 	}
 	string hexCode = longCode.str();
-	cout << "output: " << hexCode << endl;
+	//cout << "output: " << hexCode << endl;
 	cout << endl;
 	return hexCode;
 }
@@ -92,4 +95,7 @@ string read(const string& filename) {
 	return input;
 }
 
-
+nanoseconds trukmesSkaiciavimas(high_resolution_clock::time_point pradzia, high_resolution_clock::time_point pabaiga) {
+	auto trukme = duration_cast<nanoseconds>(pabaiga - pradzia);
+	return trukme;
+}

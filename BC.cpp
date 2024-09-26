@@ -1,15 +1,14 @@
 #include "Header.hpp"
 #include "abc.hpp"
 #include <fstream>
+
 using namespace std;
-
-
+using namespace std::chrono;
 
 int main() {
-
-
 	int choice;
 	string input;
+	int lines;
 	do {
 		menu(choice);
 		switch (choice) {
@@ -52,11 +51,34 @@ int main() {
 			hashFun(input);
 			break;
 		}
-		case 8: { // baigti darba
+		case 8: { // konstitucija.txt
+			cout << "kiek eiluciu norite nuskaityti? ";
+			while (!(cin >> lines) || lines > 789 || lines < 1) {
+				cout << "Netinkama ivestis. Bandykite dar karta." << endl;
+			}
+			string Input;
+			ifstream file("konstitucija.txt");
+			if (!file) {
+				cerr << "Nepavyko atidaryti failo" << endl;
+			}
+			for (int i = 0; i < lines; i++) {
+				getline(file, input);
+				Input += input;
+			}
+			file.close();
+			cout << "Failas nuskaitytas" << endl;
+
+			auto Begin = high_resolution_clock::now();
+			hashFun(Input);
+			auto End= high_resolution_clock::now();
+			cout << "Kodavimas truko: " << trukmesSkaiciavimas(Begin, End).count() << " ns" << endl;
+			break;
+		}
+		case 9: { // baigti darba
 			cout << "Programa baigta." << endl;
 			break;
 		}
 		}
-	} while (choice != 8);
+	} while (choice != 9);
 	return 0;
 }
