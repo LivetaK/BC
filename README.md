@@ -38,6 +38,7 @@ Paleidus programą išvedamas meniu, kuriame galima pasirinkti:
 ![image](https://github.com/user-attachments/assets/4f6a76f9-3e67-4067-b9a2-f058b800df52)
 
 <h2><b>Testavimas</b></h2>
+![image](https://github.com/user-attachments/assets/0486ada2-b5e6-42ff-b32c-f4928c72d948)
 
 <h3>Mano sugeneruoti failai: </h3>
 ![Screenshot 2024-09-26 192652](https://github.com/user-attachments/assets/53b5bf97-e474-488a-a153-e3c72ef5b078)
