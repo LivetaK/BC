@@ -3,6 +3,7 @@
 #include <iostream>
 #include "string.h"
 #include <vector>
+using namespace std;
 
 // siame faile yra aprasoma visa simboliu abecele, kuri yra isversta i random skaicius 16 sistemoje
 /*
