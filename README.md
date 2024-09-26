@@ -49,7 +49,7 @@ Paleidus programą išvedamas meniu, kuriame galima pasirinkti:
 ![Screenshot 2024-09-26 192530](https://github.com/user-attachments/assets/47c5360a-88be-4c4d-981d-0339cf423da4)
 
 
-<h3> testavimas su konstitucija.txt </h3>
+<h3> Testavimas su konstitucija.txt </h3>
 
 ![Screenshot 2024-09-26 230133](https://github.com/user-attachments/assets/40e8857c-fc04-40e9-a939-f3670d639e80)
 
