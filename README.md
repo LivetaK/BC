@@ -37,8 +37,9 @@ Paleidus programą išvedamas meniu, kuriame galima pasirinkti:
 
 ![image](https://github.com/user-attachments/assets/4f6a76f9-3e67-4067-b9a2-f058b800df52)
 
-<h2>Dabartiniai rezultatai:</h2>
+<h2><b>Testavimas</b></h2>
 
+<h3>Mano sugeneruoti failai: </h3>
 ![Screenshot 2024-09-26 192530](https://github.com/user-attachments/assets/86efde26-5163-44fb-90fe-add21e5d84f0)
 ![Screenshot 2024-09-26 192545](https://github.com/user-attachments/assets/e813c2e6-1ec9-4395-8a2c-47b11902ea28)
 ![Screenshot 2024-09-26 192608](https://github.com/user-attachments/assets/39b1cde5-7ae6-440e-8af7-c105f29437ad)
@@ -46,7 +47,11 @@ Paleidus programą išvedamas meniu, kuriame galima pasirinkti:
 ![Screenshot 2024-09-26 192641](https://github.com/user-attachments/assets/e45fb060-049d-41e9-ad91-0896b5475dcb)
 ![Screenshot 2024-09-26 192652](https://github.com/user-attachments/assets/5298e7aa-4354-47f6-9604-09032b593291)
 
+<h3> testavimas su konstitucija.txt </h3>
+![Screenshot 2024-09-26 230133](https://github.com/user-attachments/assets/40e8857c-fc04-40e9-a939-f3670d639e80)
 
+***
+<h2>Išvados</h2>
 Kaip matote, yra generuojama kažkas panašaus į hash kodą, tačiau programa turi daugybę trūkumų:
 
 1. Nėra sutvarkytas sugeneruoto kodo ilgis - šiuo metu jis priklauso nuo įvesties ilgio bei simbolių vietos lentelėje
