@@ -43,15 +43,15 @@ string hashFun(string input) {
 		int a = convert(c);
 		//cout << a <<endl;
 		sandauga *= a;
-		cout << sandauga << endl;
+		//cout << sandauga << endl;
 		if (sandauga < 0) {
-			cout << sandauga << endl;
+			//cout << sandauga << endl;
 			sandauga *= -1;
 			int element;
 			while (sandauga != 0) {
 				element = sandauga % 16;
 				sandauga = sandauga / 16;
-				cout << element;
+				//cout << element;
 				char character = intToHexChar(element);
 				code.push_back(character);
 
