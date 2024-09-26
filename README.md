@@ -14,23 +14,23 @@
 9. Programa kartoja šiuos veiksmus tol kol baigiasi visi įvesties simboliai
 10. Jei atlikus veiksmus su paskutiniuoju simboliu, sandauga > 0, t. y. nepasiekė int max ribos, ji "priklijuojama prie išvesties vektoriaus
 
-PRADŽIA
-input: string S;
-sandauga <- 1;
-kiekvienam simboliui iš S {
-    skaicius <- convertToNumber(simbolis)
-    sandauga <- sandauga * skaicius
-    jei sandauga < 0 tada{
-      sandauga <- -sandauga
-      hexKodas <- convertToHex(sandauga)
-      outputVector.pushback(hexKodas)
-      sandauga <- 1
-      }
-}
-jei sandauga <> 1 ir visi simboliai baigesi, tada
-outputVector.pushback(sandauga)
-return outputVector
-PABAIGA
+PRADŽIA  
+input: string S;  
+sandauga <- 1;  
+kiekvienam simboliui iš S {  
+    skaicius <- convertToNumber(simbolis)  
+    sandauga <- sandauga * skaicius  
+    jei sandauga < 0 tada{  
+      sandauga <- -sandauga  
+      hexKodas <- convertToHex(sandauga)  
+      outputVector.pushback(hexKodas)  
+      sandauga <- 1  
+      }  
+}  
+jei sandauga <> 1 ir visi simboliai baigesi, tada  
+outputVector.pushback(sandauga)  
+return outputVector  
+PABAIGA  
 
 
 
