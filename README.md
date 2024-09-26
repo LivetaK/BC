@@ -38,9 +38,9 @@ Paleidus programą išvedamas meniu, kuriame galima pasirinkti:
 ![image](https://github.com/user-attachments/assets/4f6a76f9-3e67-4067-b9a2-f058b800df52)
 
 <h2><b>Testavimas</b></h2>
-![image](https://github.com/user-attachments/assets/0486ada2-b5e6-42ff-b32c-f4928c72d948)
 
 <h3>Mano sugeneruoti failai: </h3>
+
 ![Screenshot 2024-09-26 192652](https://github.com/user-attachments/assets/53b5bf97-e474-488a-a153-e3c72ef5b078)
 ![Screenshot 2024-09-26 192641](https://github.com/user-attachments/assets/c6c98240-c81a-47d6-b5a4-286e21a63157)
 ![Screenshot 2024-09-26 192627](https://github.com/user-attachments/assets/1f4bbe27-ada1-47ef-af01-bf4f8532cd5f)
@@ -50,6 +50,7 @@ Paleidus programą išvedamas meniu, kuriame galima pasirinkti:
 
 
 <h3> testavimas su konstitucija.txt </h3>
+
 ![Screenshot 2024-09-26 230133](https://github.com/user-attachments/assets/40e8857c-fc04-40e9-a939-f3670d639e80)
 
 ***
