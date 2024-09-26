@@ -17,14 +17,17 @@ char intToHexChar(int value) {
 }
 
 void menu(int &choice) {
-    cout << "duomenis ivesti ranka - 1" << endl;
-    cout << "failas su vienu simboliu - 2" << endl;
-    cout << "failas su vienu, bet kitokiu simboliu - 3" << endl;
-    cout << "PAGRINDINIS failas su >1000 atsitiktinai sugeneruotu simboliu - 4" << endl;
-    cout << "failas su >1000 kitokiu atsitiktinai sugenruotu simboliu - 5" << endl;
-    cout << "PAGRINDINIS failas kuriame pakeistas vienas simbolis - 6" << endl;
-    cout << "tuscias failas - 7" << endl;
-    cout << "baigti darba - 8" << endl;
+	cout << "-----------------------------------------------------------------" << endl;
+    cout << "1 - duomenis ivesti ranka" << endl;
+    cout << "2 - failas su vienu simboliu" << endl;
+    cout << "3 - failas su vienu, bet kitokiu simboliu - 3" << endl;
+    cout << "4 - PAGRINDINIS failas su >1000 atsitiktinai sugeneruotu simboliu" << endl;
+    cout << "5 - failas su >1000 kitokiu atsitiktinai sugenruotu simboliu" << endl;
+    cout << "6 - PAGRINDINIS failas kuriame pakeistas vienas simbolis" << endl;
+    cout << "7 - tuscias failas" << endl;
+    cout << "8 - baigti darba" << endl;
+	cout << "-----------------------------------------------------------------" << endl;
+
 	while (!(cin >> choice)|| choice < 1 ||choice > 8) {
 		cout << "Neteisingas pasirinkimas. Bandykite dar karta" << endl;
 		cin.clear();
@@ -56,7 +59,6 @@ string hashFun(string input) {
 				code.push_back(character);
 
 			}
-			cout << endl;
 			sandauga = 1;
 		}
 		if (sandauga != 1 && i == inputVector.size()) {
@@ -69,6 +71,21 @@ string hashFun(string input) {
 		longCode << c;
 	}
 	string hexCode = longCode.str();
-	//cout << hexCode;
+	cout << "output: " << hexCode << endl;
 	return hexCode;
 }
+
+string read(const string& filename) {
+	ifstream file(filename);
+	if (!file) {
+		cerr << "Nepavyko atidaryti failo" << endl;
+		return "";
+	}
+	string input;
+	getline(file, input);
+	file.close();
+	cout << "Failas nuskaitytas" << endl;
+	return input;
+}
+
+
