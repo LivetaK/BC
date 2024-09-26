@@ -20,13 +20,15 @@ void menu(int &choice) {
 	cout << "-----------------------------------------------------------------" << endl;
     cout << "1 - duomenis ivesti ranka" << endl;
     cout << "2 - failas su vienu simboliu" << endl;
-    cout << "3 - failas su vienu, bet kitokiu simboliu - 3" << endl;
+    cout << "3 - failas su vienu, bet kitokiu simboliu" << endl;
     cout << "4 - PAGRINDINIS failas su >1000 atsitiktinai sugeneruotu simboliu" << endl;
     cout << "5 - failas su >1000 kitokiu atsitiktinai sugenruotu simboliu" << endl;
     cout << "6 - PAGRINDINIS failas kuriame pakeistas vienas simbolis" << endl;
     cout << "7 - tuscias failas" << endl;
     cout << "8 - baigti darba" << endl;
 	cout << "-----------------------------------------------------------------" << endl;
+	cout << endl;
+	cout << "Jusu pasirinkimas: ";
 
 	while (!(cin >> choice)|| choice < 1 ||choice > 8) {
 		cout << "Neteisingas pasirinkimas. Bandykite dar karta" << endl;
@@ -37,6 +39,7 @@ void menu(int &choice) {
 }
 
 string hashFun(string input) {
+	cout << "input: " << input << endl;
 	vector<char> inputVector(input.begin(), input.end());
 	int sandauga = 1;
 	vector<char> code;
@@ -72,6 +75,7 @@ string hashFun(string input) {
 	}
 	string hexCode = longCode.str();
 	cout << "output: " << hexCode << endl;
+	cout << endl;
 	return hexCode;
 }
 
