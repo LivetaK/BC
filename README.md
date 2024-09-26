@@ -32,8 +32,7 @@ outputVector.pushback(sandauga)
 return outputVector  
 PABAIGA  
 
-
-
+***
 Paleidus programą išvedamas meniu, kuriame galima pasirinkti:
 
 ![image](https://github.com/user-attachments/assets/4f6a76f9-3e67-4067-b9a2-f058b800df52)
