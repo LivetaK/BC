@@ -1,7 +1,7 @@
 <h1><b>V0.1</b></h1>
 
 ***
-<h2>Pseodokodas</h2>
+<h2>Pseudokodas</h2>
 
 1. Programa priima string tipo kintamąjį
 2. Paverčia jį simbolių rinkiniu ir kiekvieną simbolį konvertuioja į tam tikrą jau nustatytą skaitinę reikšmę
