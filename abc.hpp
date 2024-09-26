@@ -30,7 +30,7 @@ using namespace std;
 | **18 **| v | w | x | y | z |
 */
 
-extern char symbol; //or some shit
+extern char symbol;
 
 int convert(char symbol) {
     switch (symbol) 
@@ -130,7 +130,7 @@ int convert(char symbol) {
         case 'x': return 93;
         case 'y': return 94;
         case 'z': return 95;
-        default: return -1; // Return -1 for unrecognized symbols
+        default: return -1;
     }
 }
 

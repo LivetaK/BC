@@ -1,8 +1,6 @@
 #include "Header.hpp"
 #include "abc.hpp"
 #include <fstream>
-
-//0123456789abcdef
 using namespace std;
 
 
@@ -61,9 +59,4 @@ int main() {
 		}
 	} while (choice != 8);
 	return 0;
-	//int length = input.length();
-	//code(input, length);
-	//int a = convert(input);
-	//cout << input << endl;
-	//cout << a << endl;
 }
