@@ -5,7 +5,7 @@
 #include <string>
 #include <chrono>
 #include <bitset>
-
+#include <algorithm>
 
 using namespace std;
 using namespace std::chrono;
@@ -148,37 +148,110 @@ string binaryTohex(string kodas) {
 		string fourBits = kodas.substr(i, 4);
 		hex += convertHex(fourBits);
 	}
-	cout << "Hash: " << hex << endl;
 	return hex;
 }
 
 string manipulation(string code) {
 	reverse(code.begin(), code.end());
 	string kodas = tikrinimas(code);
-	cout << endl;
+	string ran1 = "1100110011001100110011110";
+	string ran2 = "01010101010101010101010101010101010";
+	string ran3 = "100011010111010001010100011010110111100";
+	string ran4 = "011010010101101010100110111010101010001011101000111";
+	string ran5 = "1110001110001110";
+	string ran6 = "01010001110101000101110101011110101010010001011100100";
+	string ran7 = "10100110101101010101000010101010111101010111000000101011";
+
+
+
 	for (int i = 0; i < 25; i++) {
-		kodas[i] = (kodas[i] == '1') ? '0' : '1';
+		kodas[i] = (kodas[i] == ran1[i]) ? '0' : '1';
 	}
-	for (int i = 50; i < 70; i++) {
-		kodas[i] = (kodas[i] == '1') ? '0' : '1';
+	for (int i = 25; i < 60; i++) {
+		kodas[i] = (kodas[i] == ran2[i-25]) ? '1' : '0';
 	}
-	for (int i = 122; i < 175; i++) {
-		kodas[i] = (kodas[i] == '0') ? '0' : '1';
+	for (int i = 60; i < 99; i++) {
+		kodas[i] = (kodas[i] == ran3[i-60]) ? '0' : '1';
 	}
-	for (int i = 200; i < 256; i++) {
-		kodas[i] = (kodas[i] == '0') ? '0' : '1';
+	for (int i = 99; i < 150; i++) {
+		kodas[i] = (kodas[i] == ran4[i-99]) ? '1' : '0';
+	}
+	for (int i = 150; i < 166; i++) {
+		kodas[i] = (kodas[i] == ran5[i-150]) ? '1' : '0';
+	}
+	for (int i = 166; i < 222; i++) {
+		kodas[i] = (kodas[i] == ran6[i-166]) ? '1' : '0';
+	}
+	for (int i = 222; i < 256; i++) {
+		kodas[i] = (kodas[i] == ran7[i-222]) ? '1' : '0';
+	}
+	string codeOne = kodas.substr(0, 17);
+	string codeTwo = kodas.substr(17, 17);
+	string codeThree = kodas.substr(34, 17);
+	string codeFour = kodas.substr(51, 17);
+	string codeFive = kodas.substr(68, 17);
+	string codeSix = kodas.substr(85, 17);
+	string codeSeven = kodas.substr(102, 17);
+	string codeEight = kodas.substr(119, 17);
+	string codeNine = kodas.substr(136, 17);
+	string codeTen = kodas.substr(153, 17);
+	string codeEleven = kodas.substr(170, 17);
+	string codeTwelve = kodas.substr(187, 17);
+	string codeThirteen = kodas.substr(204, 17);
+	string codeFourteen = kodas.substr(221, 17);
+	string codeFifteen = kodas.substr(238, 17);
+	string codeSixteen = kodas.substr(255, 1);
+
+	for (int i = 0; i < 17; ++i) {
+		swap(codeOne[i], codeEleven[i]);
+		swap(codeTwo[i], codeNine[i]);
+		swap(codeThree[i], codeTwelve[i]);
+		swap(codeFour[i], codeFourteen[i]);
+		swap(codeFive[i], codeFifteen[i]);
+		swap(codeSix[i], codeThirteen[i]);
+		swap(codeSeven[i], codeOne[i]);
+		swap(codeEight[i], codeTwo[i]);
+		swap(codeNine[i], codeSix[i]);
+		swap(codeTen[i], codeThirteen[i]);
 	}
 
-	string firstCode = kodas.substr(0, 128);
-	string secondCode = kodas.substr(128);
+	reverse(codeOne.begin(), codeOne.end());
+	reverse(codeTwo.begin(), codeTwo.end());
+	rotate(codeThree.begin(), codeThree.begin() + 5, codeThree.end());
+	rotate(codeFour.begin(), codeFour.begin() + 7, codeFour.end());
+	reverse(codeFive.begin(), codeFive.end());
+	reverse(codeSix.begin(), codeSix.end());
+	rotate(codeSeven.begin(), codeSeven.begin() + 3, codeSeven.end());
+	reverse(codeEight.begin(), codeEight.end());
+	rotate(codeNine.begin(), codeNine.begin() + 4, codeNine.end());
+	reverse(codeTen.begin(), codeTen.end());
+	reverse(codeEleven.begin(), codeEleven.end());
+	rotate(codeTwelve.begin(), codeTwelve.begin() + 6, codeTwelve.end());
+	reverse(codeThirteen.begin(), codeThirteen.end());
+	rotate(codeFourteen.begin(), codeFourteen.begin() + 5, codeFourteen.end());
+	reverse(codeFifteen.begin(), codeFifteen.end());
 
+	string manCode;
+	manCode += codeOne;
+	manCode += codeTwo;
+	manCode += codeThree;
+	manCode += codeFour;
+	manCode += codeFive;
+	manCode += codeSix;
+	manCode += codeSixteen;
+	manCode += codeSeven;
+	manCode += codeEight;
+	manCode += codeNine;
+	manCode += codeTen;
+	manCode += codeEleven;
+	manCode += codeTwelve;
+	manCode += codeThirteen;
+	manCode += codeFourteen;
+	manCode += codeFifteen;
 
 
 	// paskutinis vertimas
-	string hex = binaryTohex(kodas);
-
-
-
+	string hex = binaryTohex(manCode);
 	return hex;
 }
 
@@ -190,7 +263,9 @@ void hashfun(string input) {
 		bitset<8> binary(a);
 		code += binary.to_string();
 	}
-	manipulation(code);
+	string hash = manipulation(code);
+	cout << "Hash: " << hash << endl;
+	
 }
 
 string read(const string& filename) {
