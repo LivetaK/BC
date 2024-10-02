@@ -177,13 +177,13 @@ string manipulation(string code) {
 		kodas[i] = (kodas[i] == ran4[i-99]) ? '1' : '0';
 	}
 	for (int i = 150; i < 166; i++) {
-		kodas[i] = (kodas[i] == ran5[i-150]) ? '1' : '0';
+		kodas[i] = (kodas[i] == ran5[i-150]) ? '0' : '1';
 	}
 	for (int i = 166; i < 222; i++) {
 		kodas[i] = (kodas[i] == ran6[i-166]) ? '1' : '0';
 	}
 	for (int i = 222; i < 256; i++) {
-		kodas[i] = (kodas[i] == ran7[i-222]) ? '1' : '0';
+		kodas[i] = (kodas[i] == ran7[i-222]) ? '0' : '1';
 	}
 	string codeOne = kodas.substr(0, 17);
 	string codeTwo = kodas.substr(17, 17);
@@ -259,12 +259,13 @@ void hashfun(string input) {
 	vector<char> inputVector(input.begin(), input.end());
 	string code;
 	for (char c : inputVector) {
-		int a = convert(c);
-		bitset<8> binary(a);
+		//int a = convert(c);
+		bitset<8> binary(c);
 		code += binary.to_string();
 	}
 	string hash = manipulation(code);
 	cout << "Hash: " << hash << endl;
+	hash.clear();
 	
 }
 
