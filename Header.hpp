@@ -83,17 +83,55 @@ string hashFun(string input) {
 	cout << endl;
 	return hexCode;
 }
+string tikrinimas(string code) {
+	if (code.length() > 256) {
+		string result = code.substr(0, 256);
+		string remaining = code.substr(256);
+		int j = 0;
+		while (j < remaining.length()) {
+			for (int i = 0; i < 256; i++) {
+				if (j >= remaining.length()) {
+					break;
+				}
+				result[i] = (result[i] == remaining[j]) ? '0' : '1';
+				j++;
+			}
+		}
+		cout << endl;
+		cout << "rezultatas" << result;
+		return result;
+		
+
+	}
+	else if (code.length() < 256){
+		code.resize(256, '1');
+		cout << endl;
+		cout << "rezultatas" << code;
+		return code;
+	}
+}
+
+string manipulation(string code) {
+	reverse(code.begin(), code.end());
+	cout << code << endl;
+	tikrinimas(code);
+	return code;
+}
+
 void hashfun(string input) {
 	vector<char> inputVector(input.begin(), input.end());
-	vector<bitset<8>> code;
+	string code;
 	for (char c : inputVector) {
 		int a = convert(c);
 		bitset<8> binary(a);
 		cout << binary;
-		code.push_back(binary);
+		code += binary.to_string();
 	}
-}
+	cout << endl;
 
+	cout << code << endl;
+	manipulation(code);
+}
 
 string read(const string& filename) {
 	ifstream file(filename);
