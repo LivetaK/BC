@@ -15,7 +15,8 @@ int main() {
 		case 1: { // ranka
 			cout << "enter input: " << endl;
 			cin >> input;
-			hashFun(input);
+			//hashFun(input);
+			hashfun(input);
 			break;
 		}
 		case 2: { // failas su vienu simboliu; OneSym.txt'

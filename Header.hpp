@@ -4,6 +4,8 @@
 #include <sstream>
 #include <string>
 #include <chrono>
+#include <bitset>
+
 
 using namespace std;
 using namespace std::chrono;
@@ -77,10 +79,21 @@ string hashFun(string input) {
 		longCode << c;
 	}
 	string hexCode = longCode.str();
-	//cout << "output: " << hexCode << endl;
+	cout << "output: " << hexCode << endl;
 	cout << endl;
 	return hexCode;
 }
+void hashfun(string input) {
+	vector<char> inputVector(input.begin(), input.end());
+	vector<bitset<8>> code;
+	for (char c : inputVector) {
+		int a = convert(c);
+		bitset<8> binary(a);
+		cout << binary;
+		code.push_back(binary);
+	}
+}
+
 
 string read(const string& filename) {
 	ifstream file(filename);
