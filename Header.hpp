@@ -13,29 +13,29 @@ using namespace std::chrono;
 
 char intToHexChar(int value) {
     if (value >= 0 && value <= 9) {
-        return '0' + value; // Convert 0-9 to '0'-'9'
+        return '0' + value;
     }
     else if (value >= 10 && value <= 15) {
-        return 'a' + (value - 10); // Convert 10-15 to 'A'-'F'
+        return 'a' + (value - 10);
     }
 }
 
-void menu(int &choice) {
+void menu(int& choice) {
 	cout << "-----------------------------------------------------------------" << endl;
-    cout << "1 - duomenis ivesti ranka" << endl;
-    cout << "2 - failas su vienu simboliu" << endl;
-    cout << "3 - failas su vienu, bet kitokiu simboliu" << endl;
-    cout << "4 - PAGRINDINIS failas su >1000 atsitiktinai sugeneruotu simboliu" << endl;
-    cout << "5 - failas su >1000 kitokiu atsitiktinai sugenruotu simboliu" << endl;
-    cout << "6 - PAGRINDINIS failas kuriame pakeistas vienas simbolis" << endl;
-    cout << "7 - tuscias failas" << endl;
+	cout << "1 - duomenis ivesti ranka" << endl;
+	cout << "2 - failas su vienu simboliu" << endl;
+	cout << "3 - failas su vienu, bet kitokiu simboliu" << endl;
+	cout << "4 - PAGRINDINIS failas su >1000 atsitiktinai sugeneruotu simboliu" << endl;
+	cout << "5 - failas su >1000 kitokiu atsitiktinai sugenruotu simboliu" << endl;
+	cout << "6 - PAGRINDINIS failas kuriame pakeistas vienas simbolis" << endl;
+	cout << "7 - tuscias failas" << endl;
 	cout << "8 - skaityti eilutes is failo konstitucija.txt" << endl;
-    cout << "9 - baigti darba" << endl;
+	cout << "9 - baigti darba" << endl;
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << endl;
 	cout << "Jusu pasirinkimas: ";
 
-	while (!(cin >> choice)|| choice < 1 ||choice > 9) {
+	while (!(cin >> choice) || choice < 1 || choice > 9) {
 		cout << "Neteisingas pasirinkimas. Bandykite dar karta" << endl;
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -97,25 +97,89 @@ string tikrinimas(string code) {
 				j++;
 			}
 		}
-		cout << endl;
-		cout << "rezultatas" << result;
 		return result;
-		
+
 
 	}
-	else if (code.length() < 256){
-		code.resize(256, '1');
-		cout << endl;
-		cout << "rezultatas" << code;
+	else if (code.length() == 0) {
+		code.resize(256, '0');
+		return code;
+
+	}
+	else { // (code.length() < 256)
+		char bi = code[0];
+		code.resize(50, bi);
+		bi = code[7];
+		code.resize(100, bi);
+		bi = code[4];
+		code.resize(150, bi);
+		bi = code[2];
+		code.resize(200, bi);
+		bi = code[3];
+		code.resize(256, bi);
 		return code;
 	}
+}
+char convertHex(const string& fourBits) {
+	int decimalValue =stoi(fourBits, nullptr, 2);
+	switch (decimalValue) {
+	case 0: return '0';
+	case 1: return '1';
+	case 2: return '2';
+	case 3: return '3';
+	case 4: return '4';
+	case 5: return '5';
+	case 6: return '6';
+	case 7: return '7';
+	case 8: return '8';
+	case 9: return '9';
+	case 10: return 'a';
+	case 11: return 'b';
+	case 12: return 'c';
+	case 13: return 'd';
+	case 14: return 'e';
+	case 15: return 'f';
+	}
+}
+
+string binaryTohex(string kodas) {
+	string hex;
+	for (int i = 0; i < 256; i += 4){
+		string fourBits = kodas.substr(i, 4);
+		hex += convertHex(fourBits);
+	}
+	cout << "Hash: " << hex << endl;
+	return hex;
 }
 
 string manipulation(string code) {
 	reverse(code.begin(), code.end());
-	cout << code << endl;
-	tikrinimas(code);
-	return code;
+	string kodas = tikrinimas(code);
+	cout << endl;
+	for (int i = 0; i < 25; i++) {
+		kodas[i] = (kodas[i] == '1') ? '0' : '1';
+	}
+	for (int i = 50; i < 70; i++) {
+		kodas[i] = (kodas[i] == '1') ? '0' : '1';
+	}
+	for (int i = 122; i < 175; i++) {
+		kodas[i] = (kodas[i] == '0') ? '0' : '1';
+	}
+	for (int i = 200; i < 256; i++) {
+		kodas[i] = (kodas[i] == '0') ? '0' : '1';
+	}
+
+	string firstCode = kodas.substr(0, 128);
+	string secondCode = kodas.substr(128);
+
+
+
+	// paskutinis vertimas
+	string hex = binaryTohex(kodas);
+
+
+
+	return hex;
 }
 
 void hashfun(string input) {
@@ -124,12 +188,8 @@ void hashfun(string input) {
 	for (char c : inputVector) {
 		int a = convert(c);
 		bitset<8> binary(a);
-		cout << binary;
 		code += binary.to_string();
 	}
-	cout << endl;
-
-	cout << code << endl;
 	manipulation(code);
 }
 
