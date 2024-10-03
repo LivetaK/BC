@@ -255,26 +255,26 @@ string manipulation(string code) {
 		bitset<8> binary(c);
 		kodass += binary.to_string();
 	}
-	string labas = tikrinimas(kodass);
+	string Code = tikrinimas(kodass);
 	//cout << labas;
 	string manCode;
 
-	string codeOne = kodass.substr(0, 17);
-	string codeTwo = kodass.substr(17, 17);
-	string codeThree = kodass.substr(34, 17);
-	string codeFour = kodass.substr(51, 17);
-	string codeFive = kodass.substr(68, 17);
-	string codeSix = kodass.substr(85, 17);
-	string codeSeven = kodass.substr(102, 17);
-	string codeEight = kodass.substr(119, 17);
-	string codeNine = kodass.substr(136, 17);
-	string codeTen = kodass.substr(153, 17);
-	string codeEleven = kodass.substr(170, 17);
-	string codeTwelve = kodass.substr(187, 17);
-	string codeThirteen = kodass.substr(204, 17);
-	string codeFourteen = kodass.substr(221, 17);
-	string codeFifteen = kodass.substr(238, 17);
-	string codeSixteen = kodass.substr(255, 1);
+	string codeOne = Code.substr(0, 17);
+	string codeTwo = Code.substr(17, 17);
+	string codeThree = Code.substr(34, 17);
+	string codeFour = Code.substr(51, 17);
+	string codeFive = Code.substr(68, 17);
+	string codeSix = Code.substr(85, 17);
+	string codeSeven = Code.substr(102, 17);
+	string codeEight = Code.substr(119, 17);
+	string codeNine = Code.substr(136, 17);
+	string codeTen = Code.substr(153, 17);
+	string codeEleven = Code.substr(170, 17);
+	string codeTwelve = Code.substr(187, 17);
+	string codeThirteen = Code.substr(204, 17);
+	string codeFourteen = Code.substr(221, 17);
+	string codeFifteen = Code.substr(238, 17);
+	string codeSixteen = Code.substr(255, 1);
 
 	for (int i = 0; i < 17; ++i) {
 		swap(codeOne[i], codeEleven[i]);
