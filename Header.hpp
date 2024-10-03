@@ -6,6 +6,7 @@
 #include <chrono>
 #include <bitset>
 #include <algorithm>
+#include <cstdlib>
 
 using namespace std;
 using namespace std::chrono;
@@ -151,6 +152,44 @@ string binaryTohex(string kodas) {
 	return hex;
 }
 
+
+string skaiciavimai(string tempDec) { //128 max
+	int n = tempDec.length();
+	int y = n / 9; 
+	int x = n % 9;
+	vector <string> chunk;
+	int j = 0;
+	for (int i = 0; i < y; i++) {
+		chunk.push_back(tempDec.substr(j, 9));;
+		j += 9;
+	}
+	if (x > 0) {
+		chunk.push_back(tempDec.substr(j, x));
+	}
+
+	vector <int> chunkInt;
+	for (string part : chunk) {
+		chunkInt.push_back(stoi(part));
+	}
+	int numChunks = chunkInt.size();
+	
+	string mainString; 
+	int half = numChunks / 2;
+	unsigned long long result = 0;
+	for (int i = 0; i < half; i++) {
+		result = chunkInt[i] * chunkInt[i + half];
+		mainString += to_string(result);
+		result = 0;
+	}
+	if (numChunks % 2 == 1) {
+		result = chunkInt[0] * chunkInt[numChunks - 1];
+		mainString += to_string(result);
+		result = 0;
+	}
+
+	return mainString;
+}
+
 string manipulation(string code) {
 	reverse(code.begin(), code.end());
 	string kodas = tikrinimas(code);
@@ -185,22 +224,57 @@ string manipulation(string code) {
 	for (int i = 222; i < 256; i++) {
 		kodas[i] = (kodas[i] == ran7[i-222]) ? '0' : '1';
 	}
-	string codeOne = kodas.substr(0, 17);
-	string codeTwo = kodas.substr(17, 17);
-	string codeThree = kodas.substr(34, 17);
-	string codeFour = kodas.substr(51, 17);
-	string codeFive = kodas.substr(68, 17);
-	string codeSix = kodas.substr(85, 17);
-	string codeSeven = kodas.substr(102, 17);
-	string codeEight = kodas.substr(119, 17);
-	string codeNine = kodas.substr(136, 17);
-	string codeTen = kodas.substr(153, 17);
-	string codeEleven = kodas.substr(170, 17);
-	string codeTwelve = kodas.substr(187, 17);
-	string codeThirteen = kodas.substr(204, 17);
-	string codeFourteen = kodas.substr(221, 17);
-	string codeFifteen = kodas.substr(238, 17);
-	string codeSixteen = kodas.substr(255, 1);
+
+	string tempHex = binaryTohex(kodas);
+	string tempDec;
+
+
+	//cout << kodas << endl;
+	//cout << tempHex << endl;
+
+
+	for (char number : tempHex) {
+		if (number >= '0' && number <= '9') {
+			tempDec += number;
+		}
+		else {
+			int decimalValue = number - 'a' + 10;
+			tempDec += to_string(decimalValue);
+		}
+	}
+	//cout << tempDec << endl;
+
+	kodas.clear();
+	kodas = skaiciavimai(tempDec);
+
+	//cout << "kodas" << kodas << endl;
+	//cout << "labas" << endl;
+	vector<char> inputVector(kodas.begin(), kodas.end());
+	string kodass;
+	for (char c : inputVector) {
+		bitset<8> binary(c);
+		kodass += binary.to_string();
+	}
+	string labas = tikrinimas(kodass);
+	//cout << labas;
+	string manCode;
+
+	string codeOne = kodass.substr(0, 17);
+	string codeTwo = kodass.substr(17, 17);
+	string codeThree = kodass.substr(34, 17);
+	string codeFour = kodass.substr(51, 17);
+	string codeFive = kodass.substr(68, 17);
+	string codeSix = kodass.substr(85, 17);
+	string codeSeven = kodass.substr(102, 17);
+	string codeEight = kodass.substr(119, 17);
+	string codeNine = kodass.substr(136, 17);
+	string codeTen = kodass.substr(153, 17);
+	string codeEleven = kodass.substr(170, 17);
+	string codeTwelve = kodass.substr(187, 17);
+	string codeThirteen = kodass.substr(204, 17);
+	string codeFourteen = kodass.substr(221, 17);
+	string codeFifteen = kodass.substr(238, 17);
+	string codeSixteen = kodass.substr(255, 1);
 
 	for (int i = 0; i < 17; ++i) {
 		swap(codeOne[i], codeEleven[i]);
@@ -231,7 +305,6 @@ string manipulation(string code) {
 	rotate(codeFourteen.begin(), codeFourteen.begin() + 5, codeFourteen.end());
 	reverse(codeFifteen.begin(), codeFifteen.end());
 
-	string manCode;
 	manCode += codeOne;
 	manCode += codeTwo;
 	manCode += codeThree;
@@ -248,6 +321,7 @@ string manipulation(string code) {
 	manCode += codeThirteen;
 	manCode += codeFourteen;
 	manCode += codeFifteen;
+	
 
 
 	// paskutinis vertimas
