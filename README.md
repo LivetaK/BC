@@ -20,6 +20,12 @@
 
 ![Screenshot 2024-10-03 203704](https://github.com/user-attachments/assets/51eef497-4854-46f8-8484-14b56db34feb)
 
+<h3> Testavimas su atsitiktinėmis poromis </h3>
+
+Testavusi failą su atsitiktinėmis poromis išsiaiškinau, kad kolizijų nėra:
+
+![Screenshot 2024-10-03 221100](https://github.com/user-attachments/assets/4b4bbefb-d483-41b7-9a5d-340d032f5f47)
+
 <h3>PALYGINIMAS</h3>
 
 ![Screenshot 2024-10-03 205514](https://github.com/user-attachments/assets/a5ae1535-7ad9-4611-a8d2-048fc4df5ec9)
