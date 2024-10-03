@@ -256,7 +256,6 @@ string manipulation(string code) {
 		kodass += binary.to_string();
 	}
 	string Code = tikrinimas(kodass);
-	//cout << labas;
 	string manCode;
 
 	string codeOne = Code.substr(0, 17);
