@@ -3,6 +3,20 @@
 ***
 <h2>Pseudokodas</h2>
 
+1. Programa priima string tipo kintamąjį
+2. Verčia jį į dvejetainę sistemą, naudodama bitų rinkinius po 8
+3. Dvejetainis kodas perduodamas funkcijai, kuri iš pradžių kodą "apverčia" (enhl. reverse)
+4. Tada funkcija kodą siunčia į kitą - tikrinimo funkciją, kuri bits sudedama arba pridedama, paverčia dvejetainį kodą visuomet tokio paties ilgio kodu - 256 ilgio
+5. Tada kodas gražinamas į manipuliavimo funkciją ir ten keičiamas su sudėjimo funkcija, su iš anksčiau sugeneruotais raktais
+6. Pakeistas kodas verčiamas į šešioliktainę sistemą, o iš jos - į dešimtainę
+7. Tada kodas siunčiamas į funkciją "skaičiavimai", kuri kodą, kuris yra minimum 64 ir maximum 128 skaitnų ilgio atitinkamai suskirsto į dalis, kuriose yra 9 ar mažiau skaitmenys, kodėl taip daroma, bus paaiškinta vėliau
+8. Kai kodas yra suskirstyutas į dalis, dalys yra tarpusavyje dauginamos, jei dalių skaičius yra lyginis, tada kodas tarsi daslinamas per pusę ir pirma dalis yra dauginama su kita pirmąja dalimi, jei dalių skaičius yra nelyginis, dauginimo principas išlieka tas pats, tačiau galinę dalį dar padauginame iš pačios pirmosios
+9. Viską verčiame ir kliojuojame į stringą;
+10. Kodėl būtina buvo suskirstyti po maksimum 9 skaitmenis? Todėl, kad int tipo kintamasis priima maksimum 10 skaitmenų, kurių maksimumas nėra 9 999 999 999, todėl, apsisaugodami skaitmenų skaičių sumažiname vientu. Beje, sudaugindami su didžiausius int tipo skaičius, mes nepasieksime unsigned long long ribos, todėl galime drąsiai tai daryti
+11. Po šių veiksmų kodas vėl yra verčiamas į dvejetainė sistemą (bitset<8>)
+12. Kodu yra manipuliuojama, tai yra, jis vėl yra skirstomas į dalis, tos dalys tarpusavyje maišomos, rotate'inamos, apverčiamos ir kodas susiklijuoja į vientisą
+13. galiausiai kodas yra paverčiamas į šešioliktainę sistemą, visuomet gaunasi tokio paties ilgio, dėka tikrinimo funkcijos.
+
 ***
 
 <h2><b>Testavimas</b></h2>
@@ -30,7 +44,16 @@ Testavusi failą su atsitiktinėmis poromis išsiaiškinau, kad kolizijų nėra:
 
 ![Screenshot 2024-10-03 205514](https://github.com/user-attachments/assets/a5ae1535-7ad9-4611-a8d2-048fc4df5ec9)
 
+<h2>Išvados</h2>
+Kaip matote, kuo didesnis input, tuo pranašesnė tampa tampa antra versija, taip ėvyksta todėl, kad pirmoje versijoje kiekvienas simbolis buvo keičiamas į tam tikrą nustatytą skaitinę reikšmę, kas, apdorojant didesnius duomenis, atima labai daug laiko.
 
+<h3>Pataisyti trūkumai</h3>
+
+1. hashas visuomet gaunasi tokio paties ilgio
+2. dirbant su didesniais kiekiais duomenų, programa užtrunka ilgiau, tačiau ne taip ilgai, kaip užtrukdavo pirmoje versijoje
+3. net tada, kai įvetis skiriasi tik vienu simboliu, išvestis skiriasi nemažai
+4. yra pakankamai didelė maiša
+5. tuščias failas taip pat turi savo hashą.
 
 
 
