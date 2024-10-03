@@ -56,21 +56,29 @@ int main() {
 			while (!(cin >> lines) || lines > 789 || lines < 1) {
 				cout << "Netinkama ivestis. Bandykite dar karta." << endl;
 			}
-			string Input;
+
 			ifstream file("konstitucija.txt");
 			if (!file) {
 				cerr << "Nepavyko atidaryti failo" << endl;
 			}
+
+			stringstream Input;
+			string input;
 			for (int i = 0; i < lines; i++) {
-				getline(file, input);
-				Input += input;
+				if (getline(file, input)) {
+					Input << input << '\n';
+				}
 			}
+
 			file.close();
 			cout << "Failas nuskaitytas" << endl;
 
+			string inputString = Input.str();
+
 			auto Begin = high_resolution_clock::now();
-			hashFun(Input);
+			hashfun(inputString);
 			auto End= high_resolution_clock::now();
+
 			cout << "Kodavimas truko: " << trukmesSkaiciavimas(Begin, End).count() << " ns" << endl;
 			break;
 		}

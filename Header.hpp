@@ -339,7 +339,6 @@ void hashfun(string input) {
 	string hash = manipulation(code);
 	cout << "Hash: " << hash << endl;
 	hash.clear();
-	
 }
 
 string read(const string& filename) {
