@@ -31,12 +31,14 @@ void menu(int& choice) {
 	cout << "6 - PAGRINDINIS failas kuriame pakeistas vienas simbolis" << endl;
 	cout << "7 - tuscias failas" << endl;
 	cout << "8 - skaityti eilutes is failo konstitucija.txt" << endl;
-	cout << "9 - baigti darba" << endl;
+	cout << "9 - skaityti 100 000 atsitiktiniu simboliu eiluciu faila" << endl;
+	cout << "10 - skaityti faila su 100 000 eiluciu atsitiktiniu simboliu poru, kur skiriasi tik vienas elementas" << endl;
+	cout << "11 - baigti darba" << endl;
 	cout << "-----------------------------------------------------------------" << endl;
 	cout << endl;
 	cout << "Jusu pasirinkimas: ";
 
-	while (!(cin >> choice) || choice < 1 || choice > 9) {
+	while (!(cin >> choice) || choice < 1 || choice > 11) {
 		cout << "Neteisingas pasirinkimas. Bandykite dar karta" << endl;
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -44,46 +46,7 @@ void menu(int& choice) {
 	}
 }
 
-string hashFun(string input) {
-	//cout << "input: " << input << endl;
-	vector<char> inputVector(input.begin(), input.end());
-	int sandauga = 1;
-	vector<char> code;
-	int i = 0;
-	for (char c : inputVector) {
-		i++;
-		int a = convert(c);
-		//cout << a <<endl;
-		sandauga *= a;
-		//cout << sandauga << endl;
-		if (sandauga < 0) {
-			//cout << sandauga << endl;
-			sandauga *= -1;
-			int element;
-			while (sandauga != 0) {
-				element = sandauga % 16;
-				sandauga = sandauga / 16;
-				//cout << element;
-				char character = intToHexChar(element);
-				code.push_back(character);
 
-			}
-			sandauga = 1;
-		}
-		if (sandauga != 1 && i == inputVector.size()) {
-			code.push_back(sandauga);
-		}
-	}
-	stringstream longCode;
-	for (char c : code) {
-		//cout << c;
-		longCode << c;
-	}
-	string hexCode = longCode.str();
-	cout << "output: " << hexCode << endl;
-	cout << endl;
-	return hexCode;
-}
 string tikrinimas(string code) {
 	if (code.length() > 256) {
 		string result = code.substr(0, 256);
@@ -248,7 +211,6 @@ string manipulation(string code) {
 	kodas = skaiciavimai(tempDec);
 
 	//cout << "kodas" << kodas << endl;
-	//cout << "labas" << endl;
 	vector<char> inputVector(kodas.begin(), kodas.end());
 	string kodass;
 	for (char c : inputVector) {
@@ -328,7 +290,7 @@ string manipulation(string code) {
 	return hex;
 }
 
-void hashfun(string input) {
+string hashfun(string input) {
 	vector<char> inputVector(input.begin(), input.end());
 	string code;
 	for (char c : inputVector) {
@@ -337,7 +299,7 @@ void hashfun(string input) {
 		code += binary.to_string();
 	}
 	string hash = manipulation(code);
-	cout << "Hash: " << hash << endl;
+	return hash;
 	hash.clear();
 }
 
