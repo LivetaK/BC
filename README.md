@@ -9,8 +9,16 @@
 
 <h3>Mano sugeneruoti failai: </h3>
 
+![Screenshot 2024-10-03 200803](https://github.com/user-attachments/assets/a289f5c7-4f34-4733-a9d3-36b5db4fa305)
+![Screenshot 2024-10-03 200820](https://github.com/user-attachments/assets/b6a0a22a-011d-4d96-a112-c8b068c6933d)
+![Screenshot 2024-10-03 200829](https://github.com/user-attachments/assets/13767260-07f1-4dc0-9da1-aa8450dbe2a4)
+![Screenshot 2024-10-03 200838](https://github.com/user-attachments/assets/b0454554-2fe4-4d29-8b8e-1a5d76114057)
+![Screenshot 2024-10-03 200852](https://github.com/user-attachments/assets/8e08f11c-580e-42f6-842f-5b859c257160)
+![Screenshot 2024-10-03 200901](https://github.com/user-attachments/assets/e3a4b6d8-f817-43df-bc6f-ae988d65f3de)
 
+<h3> Testavimas su konstitucija.txt </h3>
 
+![Screenshot 2024-10-03 203704](https://github.com/user-attachments/assets/51eef497-4854-46f8-8484-14b56db34feb)
 
 
 
