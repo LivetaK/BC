@@ -1,3 +1,24 @@
+<h1><b>V0.2</b></h1>
+
+***
+<h2>Pseudokodas</h2>
+
+***
+
+<h2><b>Testavimas</b></h2>
+
+<h3>Mano sugeneruoti failai: </h3>
+
+
+
+
+
+
+
+
+
+
+
 <h1><b>V0.1</b></h1>
 
 ***
