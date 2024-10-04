@@ -11,6 +11,39 @@
 using namespace std;
 using namespace std::chrono;
 
+string hexToBin(const string& hex) {
+	string bin;
+	bin.reserve(256);
+	for (char c : hex) {
+		unsigned int n = 0;
+		if (c >= '0' && c <= '9') {
+			n = c - '0';
+		}
+		else if (c >= 'a' && c <= 'f') {
+			n = c - 'a' + 10;
+		}
+		else if (c >= 'A' && c <= 'F') {
+			n = c - 'A' + 10;
+		}
+		else {
+			cerr << "Netinkamas hex simbolis: " << c << endl;
+			continue;
+		}
+		bitset<4> b(n);
+		bin += b.to_string();
+	}
+	return bin;
+}
+
+int skirtumas(const string hash1, const string hash2) {
+	int n = 0;
+	for (int i = 0; i < hash1.size(); i++) {
+		if (hash1[i] != hash2[i]) {
+			n++;
+		}
+	}
+	return n;
+}
 
 char intToHexChar(int value) {
     if (value >= 0 && value <= 9) {
@@ -283,7 +316,6 @@ string manipulation(string code) {
 	manCode += codeFourteen;
 	manCode += codeFifteen;
 	
-
 
 	// paskutinis vertimas
 	string hex = binaryTohex(manCode);

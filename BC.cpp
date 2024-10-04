@@ -123,34 +123,66 @@ int main() {
 			break;
 
 		}
-		case 10: { // atsitiktines poros su vienu nesutamopanciu simboliu; stringPorosDIFF.txt
+		case 10: { // atsitiktines poros su vienu nesutampanciu simboliu; stringPorosDIFF.txt
 			ifstream file("stringPorosDIFF.txt");
 			if (!file) {
 				cerr << "Nepavyko atidaryti failo" << endl;
 			}
 			string input1, input2;
 			string hash1, hash2;
-			int sutampa = 0;
-			int nesutampa = 0;
+			int skirtumasH = 0;
+			int skirtumasB = 0;
+			double proc = 0.0;
+			double procB = 0.0;
+			double bendras =0;
+			double bendrasB = 0;
+			double minProc = 100.0;
+			double maxProc = 0.0;
+			double minProcB = 100.0;
+			double maxProcB = 0.0;
+			string biKod;
+			string binHash1;
+			string binHash2;
 			for (int i = 0; i < 100000; i++) {
-				file >> input1;
+				file >> input1 >> input2;
 				hash1 = hashfun(input1);
-				file >> input2;
 				hash2 = hashfun(input2);
-				if (hash1 == hash2) {
-					sutampa++;
-				}
-				else {
-					nesutampa++;
-				}
-				/*cout << "Hash1: " << hash1 << endl;
-				cout << "Hash2: " << hash2 << endl;*/
-				//cout << endl;
+				skirtumasH = skirtumas(hash1, hash2);
+				proc = skirtumasH / 64.0 * 100;
+				bendras += proc;
+				if (proc < minProc) minProc = proc;
+				if (proc > maxProc) maxProc = proc;
+				binHash1 = hexToBin(hash1);
+				binHash2 = hexToBin(hash2);
+				skirtumasB = skirtumas(binHash1, binHash2);
+				procB = skirtumasB / 256.0 * 100;
+				bendrasB += procB;
+				if (procB < minProcB) minProcB = procB;
+				if (procB > maxProcB) maxProcB = procB;
+
+				skirtumasH = 0;
+				skirtumasB = 0;
+				proc = 0;
 				hash1.clear();
 				hash2.clear();
+
+
 			}
-			cout << "sutampa: " << sutampa << endl;
-			cout << "nesutampa: " << nesutampa << endl;
+			double hexSkirtingumas = bendras / 100000;
+			double biSkirtingumas = bendrasB / 100000;
+
+			cout << "Skirtumai hex lygmenyje: " << endl;
+			cout << "Vidutinis procentas: " << hexSkirtingumas << endl;
+			cout << "Minimalus procentas: " << minProc << endl;
+			cout << "Maksimalus procentas: " << maxProc << endl;
+			cout << endl;
+			cout << "Skirtumai bi lygmenyje: " << endl;
+			cout << "Vidutinis procentas: " << biSkirtingumas << endl;
+			cout << "Minimalus procentas: " << minProcB << endl;
+			cout << "Maksimalus procentas: " << maxProcB << endl;
+
+
+
 			file.close();
 			break;
 
