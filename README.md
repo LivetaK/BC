@@ -20,28 +20,28 @@
 15. Hash visuomet gaunasi tokio paties ilgio, dėka tikrinimo funkcijos, nes 256 / 4 = 64.
 
 PRADŽA
-Įvestis: string s;
-DvejetainisKodas<8> <- s;
-DvejetainisKodas <- apversti(DvejetainisKodas);
-DvejetainisKodas256 <- tikrinimas(SvejetainisKodas);
-PakeistasDvejetainisKodas256 <- DvejetainisKodas256 + raktai;
-DešimtainisKodas <- PakeistasDvejetainisKodas256;
-DaliųSąrašas <- padalinti_į_dalis(DešimtainisKodas, maksimalus_skaitmenų_skaičius = 9);
-Jeigu DešimtainisKodas mod 9 = 0{
-PusėIlgio <- ilgis(DaliųSąrašas) / 2;
-Ciklui i nuo 0 iki (PusėIlgio - 1):
-NaujaDalis[i] <- DaliųSąrašas[i] * DaliųSąrašas[i + PusėIlgio];
-}Kitu atveju{
-PusėIlgio <- ilgis(DaliųSąrašas) / 2;
-Ciklui i nuo 0 iki (PusėIlgio - 1):
-NaujaDalis[i] <- DaliųSąrašas[i] * DaliųSąrašas[i + PusėIlgio];
-NaujaDalis[PusėIlgio] <- DaliųSąrašas[0] * DaliųSąrašas[-1];
-}
-PakeistasDešimtainisKodas <- sujungti_dalis(NaujaDalis);
-DvejetainisKodas<8> <- PakeistasDešimtainisKodas;
-rotuoti arba apversti(padalinti_į_dalis(DvejetainisKodas<8>));
-Versti_į ŠešioliktainisKodas;
-Hash <- ŠešioliktainisKodas;
+Įvestis: string s;  
+DvejetainisKodas<8> <- s;  
+DvejetainisKodas <- apversti(DvejetainisKodas);  
+DvejetainisKodas256 <- tikrinimas(SvejetainisKodas);  
+PakeistasDvejetainisKodas256 <- DvejetainisKodas256 + raktai;  
+DešimtainisKodas <- PakeistasDvejetainisKodas256;  
+DaliųSąrašas <- padalinti_į_dalis(DešimtainisKodas, maksimalus_skaitmenų_skaičius = 9);  
+Jeigu DešimtainisKodas mod 9 = 0{  
+PusėIlgio <- ilgis(DaliųSąrašas) / 2;  
+Ciklui i nuo 0 iki (PusėIlgio - 1):  
+NaujaDalis[i] <- DaliųSąrašas[i] * DaliųSąrašas[i + PusėIlgio];  
+}Kitu atveju{  
+PusėIlgio <- ilgis(DaliųSąrašas) / 2;  
+Ciklui i nuo 0 iki (PusėIlgio - 1):  
+NaujaDalis[i] <- DaliųSąrašas[i] * DaliųSąrašas[i + PusėIlgio];  
+NaujaDalis[PusėIlgio] <- DaliųSąrašas[0] * DaliųSąrašas[-1]; 
+}  
+PakeistasDešimtainisKodas <- sujungti_dalis(NaujaDalis);  
+DvejetainisKodas<8> <- PakeistasDešimtainisKodas;  
+rotuoti arba apversti(padalinti_į_dalis(DvejetainisKodas<8>));  
+Versti_į ŠešioliktainisKodas;  
+Hash <- ŠešioliktainisKodas;  
 
 ***
 
