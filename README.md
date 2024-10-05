@@ -36,9 +36,14 @@
 
 <h3> Testavimas su atsitiktinėmis poromis </h3>
 
-Testavusi failą su atsitiktinėmis poromis išsiaiškinau, kad kolizijų nėra:
+Testavusi failą su atsitiktinėmis poromis išsiaiškinau, kad kolizijų kaip ir nėra:
 
 ![Screenshot 2024-10-03 221100](https://github.com/user-attachments/assets/4b4bbefb-d483-41b7-9a5d-340d032f5f47)
+
+Tačiau, testavusi failą su poromis, tarp kurių skiriasi tik vienas simbolis, išsiaiškinau, kad kolizijų vis dėlto yra:
+
+![image](https://github.com/user-attachments/assets/cd404ce7-8e9d-4cb4-a546-211e1b86899d)
+
 
 <h3>PALYGINIMAS</h3>
 
