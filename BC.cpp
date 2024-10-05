@@ -128,10 +128,6 @@ int main() {
 			if (!file) {
 				cerr << "Nepavyko atidaryti failo" << endl;
 			}
-			string input1, input2;
-			string hash1, hash2;
-			int skirtumasH = 0;
-			int skirtumasB = 0;
 			double proc = 0.0;
 			double procB = 0.0;
 			double bendras =0;
@@ -140,32 +136,28 @@ int main() {
 			double maxProc = 0.0;
 			double minProcB = 100.0;
 			double maxProcB = 0.0;
-			string biKod;
-			string binHash1;
-			string binHash2;
+
 			for (int i = 0; i < 100000; i++) {
+				string input1, input2;
 				file >> input1 >> input2;
-				hash1 = hashfun(input1);
-				hash2 = hashfun(input2);
-				skirtumasH = skirtumas(hash1, hash2);
+				string hash1 = hashfun(input1);
+				string hash2 = hashfun(input2);
+				int skirtumasH = skirtumas(hash1, hash2);
 				proc = skirtumasH / 64.0 * 100;
 				bendras += proc;
 				if (proc < minProc) minProc = proc;
 				if (proc > maxProc) maxProc = proc;
-				binHash1 = hexToBin(hash1);
-				binHash2 = hexToBin(hash2);
-				skirtumasB = skirtumas(binHash1, binHash2);
+
+				string binHash1 = hexToBin(hash1);
+				string binHash2 = hexToBin(hash2);
+				int skirtumasB = skirtumas(binHash1, binHash2);
 				procB = skirtumasB / 256.0 * 100;
 				bendrasB += procB;
 				if (procB < minProcB) minProcB = procB;
 				if (procB > maxProcB) maxProcB = procB;
 
-				skirtumasH = 0;
-				skirtumasB = 0;
 				proc = 0;
-				hash1.clear();
-				hash2.clear();
-
+				
 
 			}
 			double hexSkirtingumas = bendras / 100000;
@@ -180,8 +172,6 @@ int main() {
 			cout << "Vidutinis procentas: " << biSkirtingumas << endl;
 			cout << "Minimalus procentas: " << minProcB << endl;
 			cout << "Maksimalus procentas: " << maxProcB << endl;
-
-
 
 			file.close();
 			break;
