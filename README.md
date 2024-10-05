@@ -3,19 +3,45 @@
 ***
 <h2>Pseudokodas</h2>
 
-1. Programa priima string tipo kintamąjį
-2. Verčia jį į dvejetainę sistemą, naudodama bitų rinkinius po 8
-3. Dvejetainis kodas perduodamas funkcijai, kuri iš pradžių kodą "apverčia" (enhl. reverse)
-4. Tada funkcija kodą siunčia į kitą - tikrinimo funkciją, kuri bits sudedama arba pridedama, paverčia dvejetainį kodą visuomet tokio paties ilgio kodu - 256 ilgio
-5. Tada kodas gražinamas į manipuliavimo funkciją ir ten keičiamas su sudėjimo funkcija, su iš anksčiau sugeneruotais raktais
-6. Pakeistas kodas verčiamas į šešioliktainę sistemą, o iš jos - į dešimtainę
-7. Tada kodas siunčiamas į funkciją "skaičiavimai", kuri kodą, kuris yra minimum 64 ir maximum 128 skaitnų ilgio atitinkamai suskirsto į dalis, kuriose yra 9 ar mažiau skaitmenys, kodėl taip daroma, bus paaiškinta vėliau
-8. Kai kodas yra suskirstyutas į dalis, dalys yra tarpusavyje dauginamos, jei dalių skaičius yra lyginis, tada kodas tarsi daslinamas per pusę ir pirma dalis yra dauginama su kita pirmąja dalimi, jei dalių skaičius yra nelyginis, dauginimo principas išlieka tas pats, tačiau galinę dalį dar padauginame iš pačios pirmosios
-9. Viską verčiame ir kliojuojame į stringą;
-10. Kodėl būtina buvo suskirstyti po maksimum 9 skaitmenis? Todėl, kad int tipo kintamasis priima maksimum 10 skaitmenų, kurių maksimumas nėra 9 999 999 999, todėl, apsisaugodami skaitmenų skaičių sumažiname vientu. Beje, sudaugindami su didžiausius int tipo skaičius, mes nepasieksime unsigned long long ribos, todėl galime drąsiai tai daryti
-11. Po šių veiksmų kodas vėl yra verčiamas į dvejetainė sistemą (bitset<8>)
-12. Kodu yra manipuliuojama, tai yra, jis vėl yra skirstomas į dalis, tos dalys tarpusavyje maišomos, rotate'inamos, apverčiamos ir kodas susiklijuoja į vientisą
-13. galiausiai kodas yra paverčiamas į šešioliktainę sistemą, visuomet gaunasi tokio paties ilgio, dėka tikrinimo funkcijos.
+1. Programa priima string tipo kintamąjį;
+2. Verčia jį į dvejetainę sistemą, naudodama bitų rinkinius po 8;
+3. Dvejetainis kodas perduodamas funkcijai, kuri iš pradžių kodą "apverčia" (angl. reverse);
+4. Tada funkcija kodą siunčia į kitą - tikrinimo funkciją, kuri bitus sudedama arba pridedama, paverčia dvejetainį kodą visuomet tokio paties ilgio kodu - 256 ilgio;
+5. Tada kodas grąžinamas į manipuliavimo funkciją ir ten keičiamas su sudėjimo funkcija, su iš anksčiau sugeneruotais raktais;
+6. Pakeistas kodas verčiamas į dešimtainę sistemą;
+7. Tada kodas siunčiamas į funkciją "skaičiavimai", kuri kodą, kuris yra minimum 64 ir maximum 128 skaitnų ilgio atitinkamai suskirsto į dalis, kuriose yra 9 ar mažiau skaitmenys, kodėl taip daroma, bus paaiškinta vėliau;
+8. Kai kodas yra suskirstyutas į dalis, dalys yra tarpusavyje dauginamos, jei dalių skaičius yra lyginis, tada kodas tarsi dalinamas per pusę ir pirma dalis yra dauginama su kita pirmąja dalimi, jei dalių skaičius yra nelyginis, dauginimo principas išlieka tas pats, tačiau galinę dalį dar padauginame iš pačios pirmosios;
+9. PVZ.: Dalių skaičius - 8. 1 dalis dauginama su 5, 2 dalis dauginama su 6 ir t.t..Dalių skaičius - 9. 1 dalis dauginama su 5, 2 dalis dauginama su 6 ir t.t., lieka 9 dalis, todėl vėl paimame pirmąją dalį ir ją dauginame su devintaja;
+10. Viską verčiame ir kliojuojame į stringą;
+11. Kodėl būtina buvo suskirstyti po maksimum 9 skaitmenis? Todėl, kad int tipo kintamasis priima maksimum 10 skaitmenų, kurių maksimumas nėra 9 999 999 999, todėl, apsisaugodami skaitmenų skaičių sumažiname vientu. Beje, sudaugindami su didžiausius int tipo skaičius, mes nepasieksime unsigned long long ribos, todėl galime drąsiai tai daryti;
+12. Po šių veiksmų kodas vėl yra verčiamas į dvejetainė sistemą (bitset<8>);
+13. Kodu yra manipuliuojama, tai yra, jis vėl yra skirstomas į dalis, tos dalys tarpusavyje maišomos, rotate'inamos, apverčiamos ir kodas susiklijuoja į vientisą;
+14. Galiausiai kodas yra paverčiamas į šešioliktainę sistemą, tačiau vienam šešioliktainės sistemos simboliui yra naudojami 4 bitai, ne 8;
+15. Hash visuomet gaunasi tokio paties ilgio, dėka tikrinimo funkcijos, nes 256 / 4 = 64.
+
+PRADŽA
+Įvestis: string s;
+DvejetainisKodas<8> <- s;
+DvejetainisKodas <- apversti(DvejetainisKodas);
+DvejetainisKodas256 <- tikrinimas(SvejetainisKodas);
+PakeistasDvejetainisKodas256 <- DvejetainisKodas256 + raktai;
+DešimtainisKodas <- PakeistasDvejetainisKodas256;
+DaliųSąrašas <- padalinti_į_dalis(DešimtainisKodas, maksimalus_skaitmenų_skaičius = 9);
+Jeigu DešimtainisKodas mod 9 = 0{
+PusėIlgio <- ilgis(DaliųSąrašas) / 2;
+Ciklui i nuo 0 iki (PusėIlgio - 1):
+NaujaDalis[i] <- DaliųSąrašas[i] * DaliųSąrašas[i + PusėIlgio];
+}Kitu atveju{
+PusėIlgio <- ilgis(DaliųSąrašas) / 2;
+Ciklui i nuo 0 iki (PusėIlgio - 1):
+NaujaDalis[i] <- DaliųSąrašas[i] * DaliųSąrašas[i + PusėIlgio];
+NaujaDalis[PusėIlgio] <- DaliųSąrašas[0] * DaliųSąrašas[-1];
+}
+PakeistasDešimtainisKodas <- sujungti_dalis(NaujaDalis);
+DvejetainisKodas<8> <- PakeistasDešimtainisKodas;
+rotuoti arba apversti(padalinti_į_dalis(DvejetainisKodas<8>));
+Versti_į ŠešioliktainisKodas;
+Hash <- ŠešioliktainisKodas;
 
 ***
 
@@ -54,12 +80,14 @@ Kaip matote, kuo didesnis input, tuo pranašesnė tampa tampa antra versija, tai
 
 <h3>Pataisyti trūkumai</h3>
 
-1. hashas visuomet gaunasi tokio paties ilgio
-2. dirbant su didesniais kiekiais duomenų, programa užtrunka ilgiau, tačiau ne taip ilgai, kaip užtrukdavo pirmoje versijoje
-3. net tada, kai įvetis skiriasi tik vienu simboliu, išvestis skiriasi nemažai
-4. yra pakankamai didelė maiša
-5. tuščias failas taip pat turi savo hashą.
+1. Hash visuomet gaunasi tokio paties ilgio;
+2. Dirbant su didesniais kiekiais duomenų, programa užtrunka ilgiau, tačiau ne taip ilgai, kaip užtrukdavo pirmoje versijoje;
+3. Net tada, kai įvetis skiriasi tik vienu simboliu, išvestis skiriasi nemažai;
+4. Yra pakankamai didelė maiša;
+5. Tuščias failas taip pat turi savo hash.
 
+<h3>Dabartiniai trūkumai</h3>
+Kaip matote, tarp panašių įvesčių vis dar gaunasi panašūs ar vienodi hash, tai bus pataistyta V0.2.1.
 
 
 
